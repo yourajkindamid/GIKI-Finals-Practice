@@ -1,0 +1,38 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+using namespace std;
+
+
+int main(){
+  /*  ofstream out;
+    out.open("abdul.txt");
+string words;
+    getline(cin,words);
+    out<<words;
+    out.close();
+
+*/
+ifstream cin;
+cin.open("abdul.txt");
+string words;
+int counter;
+while(cin.eof()==0){
+    cin>>words;
+    
+    if(words != " "){
+        counter++;
+
+    }
+    else{
+        
+    }
+
+
+}
+cout<<counter;
+
+return 0;
+
+
+}

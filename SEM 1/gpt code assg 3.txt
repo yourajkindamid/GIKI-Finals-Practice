@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int my_str_str(char* first, char* second) {
+    if (!*second)
+    return 0; 
+    
+    for (int i = 0; *(first+i) != '\0'; i++) {
+        int j;
+        for (j = 0; *(second+j) != '\0'; j++) {
+            if (*((first+i)+j) != *(second+j)) {
+                break;
+            }
+        }
+        if (*(second+j) == '\0') {
+            return i;
+        }
+    }
+    return -1; 
+}
+
+int main() {
+    cout << "my_str_str returned " << my_str_str((char*)"casablanca", (char*)"blanc") << endl;
+    cout << "my_str_str returned " << my_str_str((char*)"the dog said: wow wow wow", (char*)"wow") << endl;
+    cout << "my_str_str returned " << my_str_str((char*)"the quick brown cat", (char*)"owner") << endl;
+
+    return 0;
+}
