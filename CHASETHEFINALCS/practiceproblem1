@@ -1,0 +1,119 @@
+#include <iostream>
+#include <fstream>
+#include <string>
+using namespace std;
+
+enum Department
+{CS, EE, ME};
+
+struct Course
+{
+    string code;
+    string title;
+    int creditHours;
+    Department dept;
+
+    Course()
+    {
+        cout << "Enter course code: ";
+        getline(cin, code);
+
+        cout << "Enter title: ";
+        getline(cin, title);
+
+        cout << "Enter credit hours: ";
+        cin >> creditHours;
+        cin.ignore();
+
+        int x;
+        cout << "Enter department: ";
+        cin >> x;
+        while(x < 0 || x >= 3)
+        {
+            cout << "Wrong number";
+            cin >> x;
+        }
+
+       dept = static_cast<Department>(x);
+    }
+        
+};
+
+class Registrar
+{
+    // private: 
+    // string code1;
+    // string title1;
+    // int credithrs;
+
+    public:
+    // Registrar(const Course& co)
+    // {
+    //     code1 = co.code;
+    //     title1 = co.title;
+    //     credithrs = co.creditHours;
+    // }
+
+    static void logCourse(const Course& co)
+    {
+        fstream file("courses.txt", ios::app);
+        if(file.is_open())
+        {
+            cout << "The file exists and is open" << endl; 
+        }
+        else
+        {
+            cerr << "The file does not exist";
+        }
+        
+        file << co.code << "\n";
+        file << co.title <<"\n";
+        file << co.creditHours << "\n";
+        
+        switch(co.dept)
+        {
+            case CS:
+            file << "CS";
+            break;
+
+            case EE:
+            file << "EE";
+            break;
+
+            case ME:
+            file << "ME";
+            break;
+        }
+
+        file.close();
+    }
+};
+    int main()
+    {
+        // string cod, titl;
+        // int ch;
+        // int choe;
+        // Course dut;
+        // cout << "Please enter code";
+        // cin >> cod;
+        // cin.ignore();
+        // cout << endl;
+        // cout << "Please enter title";
+        // cin >> titl;
+        // cout << "Please enter credit hours";
+        // cin >> ch;
+        // cin.ignore();
+        // cout << endl;
+        // cout << "What is your department?";
+
+
+        // cin>>choe;
+        // switch(cho
+        Course courses[3];
+
+        for(int i = 0; i < 3; i++)
+        {
+            courses[i] = Course();
+            Registrar::logCourse(courses[i]);
+        }
+    }
