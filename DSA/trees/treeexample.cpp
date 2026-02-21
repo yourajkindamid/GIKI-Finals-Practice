@@ -118,8 +118,6 @@ node* deletion(node* a, int x)
 
 int main()
 {
-    int y;
-
     node* teg = NULL;
     teg = insertion(teg, 5);
     teg = insertion(teg, 3);
